@@ -2,7 +2,7 @@ package com;
 
 public class Main {
     public static void main(String[] args) {
-        TagRepositoryImpl repository = new TagRepositoryImpl();
+        GsonTagRepositoryImpl repository = new GsonTagRepositoryImpl();
 
 
         System.out.println("Creating new tags:");

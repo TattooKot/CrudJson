@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class TagRepositoryImpl implements TagRepository {
+public class GsonTagRepositoryImpl implements TagRepository {
 
     Path path = Path.of("src/main/java/com/Tags.json");
     Gson gson = new Gson();

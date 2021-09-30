@@ -1,4 +1,4 @@
 package com;
 
-public interface TagRepository extends CrudRepository<Tag, Integer>{
+public interface TagRepository extends GenericRepository<Tag, Integer> {
 }
