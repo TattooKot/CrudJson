@@ -1,4 +1,7 @@
-package com;
+package com.tattookot.crudJson;
+
+import com.tattookot.crudJson.model.Tag;
+import com.tattookot.crudJson.repository.gson.GsonTagRepositoryImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,13 +22,13 @@ public class Main {
         System.out.println();
 
 
-        System.out.println("First element from Tags.json");
+        System.out.println("First element from tags.json");
         System.out.println(repository.getById(1));
         System.out.println();
 
 
         System.out.println("Update element:");
-        System.out.println(repository.save(new Tag(3, "Vasiliy")));
+        System.out.println(repository.update(new Tag(3, "Vasiliy")));
         System.out.println();
 
         System.out.println("All tags:");
