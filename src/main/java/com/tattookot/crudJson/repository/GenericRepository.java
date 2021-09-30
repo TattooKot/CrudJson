@@ -1,7 +1,9 @@
 package com.tattookot.crudJson.repository;
 
+import java.util.List;
+
 public interface GenericRepository<T, ID>{
-    Iterable<T> getAll();
+    List<T> getAll();
     T getById(ID id);
     T create(T entity);
     T update(T entity);

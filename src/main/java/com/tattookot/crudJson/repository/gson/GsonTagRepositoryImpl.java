@@ -34,7 +34,7 @@ public class GsonTagRepositoryImpl implements TagRepository {
 
     public Tag create(Tag tag){
         List<Tag> tagList = getAllTagsInternal();
-        Integer newMaxId = generateMax(tagList);
+        Integer newMaxId = generateMaxId(tagList);
         tag.setId(newMaxId);
         tagList.add(tag);
         writeTagsToFIle(tagList);
@@ -78,8 +78,8 @@ public class GsonTagRepositoryImpl implements TagRepository {
         return allTags;
     }
 
-    private Integer generateMax(List<Tag> tags){
-        Tag tag = getAllTagsInternal().stream().max(Comparator.comparingInt(Tag::getId)).orElse(null);
+    private Integer generateMaxId(List<Tag> tags){
+        Tag tag = tags.stream().max(Comparator.comparingInt(Tag::getId)).orElse(null);
         return Objects.nonNull(tag) ? tag.getId() + 1 : 1;
     }
 
