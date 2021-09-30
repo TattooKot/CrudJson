@@ -2,7 +2,7 @@ package com;
 
 public class Main {
     public static void main(String[] args) {
-        TagRepository repository = new TagRepository();
+        TagRepositoryImpl repository = new TagRepositoryImpl();
 
 
         System.out.println("Creating new tags:");
