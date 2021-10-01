@@ -23,14 +23,19 @@ public class TagView {
     }
 
     public void getTagById(){
-        System.out.println("Enter id: ");
-        String id = scanner.nextLine();
-        System.out.println("Tag with id " + id+ ": " + controller.getById(id));
+        int id = getIdFromConsole();
+        if(id == -1){
+            return;
+        }
+        System.out.printf("Tag with id %s: %s\n", id, id>0 ? controller.getById(id) : "does not exist");
     }
 
     public void updateTag(){
-        System.out.println("Enter id: ");
-        String id = scanner.nextLine();
+        int id = getIdFromConsole();
+        if(id == -1){
+            return;
+        }
+
         System.out.println("Enter changed name: ");
         String name = scanner.nextLine();
         Tag tag = controller.updateTag(id, name);
@@ -38,13 +43,28 @@ public class TagView {
     }
 
     public void deleteTagById(){
-        System.out.println("Enter id: ");
-        String id = scanner.nextLine();
-        if(!id.matches("\\d+")){ //перевіряти треба тут?
-            System.out.println("Wrong id");
+        int id = getIdFromConsole();
+        if(id == -1){
+            return;
         }
         controller.deleteTagById(id);
-        System.out.println("Tag with id %s was deleted");
+        System.out.println("Tag with id " + id +" was deleted");
     }
 
+    private int getIdFromConsole(){
+        System.out.println("Enter id: ");
+        String id = scanner.nextLine();
+
+        if(!id.matches("\\d+")){
+            System.out.println("Wrong id type");
+            return -1;
+        }
+
+        int numId = Integer.parseInt(id);
+        if(controller.getById(numId) == null){
+            System.out.println("Tag not found");
+            return -1;
+        }
+        return numId;
+    }
 }

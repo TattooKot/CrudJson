@@ -18,22 +18,16 @@ public class TagController {
         return repository.getAll();
     }
 
-    public Tag getById(String id){
-
-        // чи тут?
-        return id.matches("\\d+") ? repository.getById(Integer.parseInt(id)) : null;
+    public Tag getById(Integer id){
+        return repository.getById(id);
     }
 
-    public Tag updateTag(String id, String name){
-        if(!id.matches("\\d+")){ // або так
-            return null;
-        }
-        Integer numId = Integer.parseInt(id);
-        Tag tag = new Tag(numId, name);
+    public Tag updateTag(Integer id, String name){
+        Tag tag = new Tag(id, name);
         return repository.update(tag);
     }
 
-    public void deleteTagById(String id){
-        repository.deleteById(Integer.parseInt(id));
+    public void deleteTagById(Integer id){
+        repository.deleteById(id);
     }
 }
