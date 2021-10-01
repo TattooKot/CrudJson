@@ -72,7 +72,7 @@ public class GsonTagRepositoryImpl implements TagRepository {
             allTags = gson.fromJson(jsonString,listType);
 
         } catch (IOException e) {
-            System.out.println("IOException");
+            System.out.println("In getAllTagsInternal - error occurred: " + e.getMessage());
         }
 
         return allTags;
