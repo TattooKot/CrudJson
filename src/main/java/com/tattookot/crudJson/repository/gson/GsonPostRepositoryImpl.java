@@ -5,7 +5,10 @@ import com.google.gson.reflect.TypeToken;
 import com.tattookot.crudJson.model.Post;
 import com.tattookot.crudJson.repository.PostRepository;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -34,7 +37,8 @@ public class GsonPostRepositoryImpl implements PostRepository {
     @Override
     public Post create(Post post) {
         List<Post> allPosts = getAllPostsInternal();
-        post.setId(generateMaxId(allPosts));
+        Integer newMaxId = generateMaxId(allPosts);
+        post.setId(newMaxId);
         allPosts.add(post);
         writePostsToFile(allPosts);
         return post;
@@ -63,7 +67,7 @@ public class GsonPostRepositoryImpl implements PostRepository {
     }
 
     private List<Post> getAllPostsInternal(){
-        List<Post> allPosts = null;
+        List<Post> allPosts = new ArrayList<>();
 
         try(BufferedReader reader = new BufferedReader(new FileReader(path.toFile()))){
             String json = reader.readLine();

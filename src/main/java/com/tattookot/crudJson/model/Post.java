@@ -8,15 +8,22 @@ public class Post {
     private List<Tag> tagList;
     private PostStatus status;
 
-    public Post() {
 
-    }
-
-    public Post(Integer id, String content, List<Tag> tagList, PostStatus status) {
+    public Post(Integer id, String content, List<Tag> tagList) {
         this.id = id;
         this.content = content;
         this.tagList = tagList;
-        this.status = status;
+        this.status = PostStatus.ACTIVE;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", tagList=" + tagList +
+                ", status=" + status +
+                '}';
     }
 
     public Integer getId() {

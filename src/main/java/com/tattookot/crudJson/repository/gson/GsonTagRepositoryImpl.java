@@ -64,7 +64,7 @@ public class GsonTagRepositoryImpl implements TagRepository {
     }
 
     private List<Tag> getAllTagsInternal(){
-        List<Tag> allTags = null;
+        List<Tag> allTags = new ArrayList<>();
 
         try(BufferedReader reader = new BufferedReader(new FileReader(path.toFile()))) {
             String jsonString = reader.readLine();
