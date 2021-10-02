@@ -1,7 +1,6 @@
 package com.tattookot.crudJson.controller;
 
 import com.tattookot.crudJson.model.Post;
-import com.tattookot.crudJson.model.PostStatus;
 import com.tattookot.crudJson.model.Tag;
 import com.tattookot.crudJson.repository.gson.GsonPostRepositoryImpl;
 
@@ -19,7 +18,7 @@ public class PostController {
     }
 
     public Post createPost(String content, List<Tag> tagList){
-        Post post = new Post(null, content, tagList);
+        Post post = new Post(content, tagList);
         return repository.create(post);
     }
 

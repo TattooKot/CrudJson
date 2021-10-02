@@ -9,8 +9,8 @@ public class Post {
     private PostStatus status;
 
 
-    public Post(Integer id, String content, List<Tag> tagList) {
-        this.id = id;
+    public Post(String content, List<Tag> tagList) {
+        this.id = null;
         this.content = content;
         this.tagList = tagList;
         this.status = PostStatus.ACTIVE;
